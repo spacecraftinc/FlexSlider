@@ -3,7 +3,7 @@
  * Copyright 2012 WooThemes
  * Contributing Author: Tyler Smith
  
- SC customizations 0.7:
+ SC customizations 0.8:
    - added swiping flag
    - improved itemMargin consideration in carousel's slider.visible calculation
    - fixed animationLoop logic disabling nav buttons
@@ -11,6 +11,7 @@
    - re-call asNav setup if needed after addSlide
    - add array-of-items support to addSlide
    - replace deprecated jQuery 3.x event handling methods .bind, .unbind, and .delegate
+   - replace deprecated jQuery 3.x focus/blur event shorthands
  */
 ;
 (function ($) {
@@ -1170,9 +1171,9 @@
   };
 
   // Ensure the slider isn't focussed if the window loses focus.
-  $( window ).blur( function ( e ) {
+  $( window ).on('blur', function ( e ) {
     focused = false;
-  }).focus( function ( e ) {
+  }).on('focus', function ( e ) {
     focused = true;
   });
 
